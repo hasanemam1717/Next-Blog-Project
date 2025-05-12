@@ -46,15 +46,18 @@ const BlogList = () => {
         </button>
       </div>
       <div className="flex flex-wrap justify-around gap-1 gap-y-10 mb-16 xl:mx-24">
-        {blogData.map((item) => (
-          <BlogItem
-            key={item.id}
-            image={item.image}
-            category={item.category}
-            description={item.description}
-            title={item.title}
-          ></BlogItem>
-        ))}
+        {blogData
+          .filter((item) => (menu === "All" ? "true" : item.category === menu))
+          .map((item) => (
+            <BlogItem
+              key={item.id}
+              image={item.image}
+              category={item.category}
+              description={item.description}
+              title={item.title}
+              id={item.id}
+            ></BlogItem>
+          ))}
       </div>
     </div>
   );
